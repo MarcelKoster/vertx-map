@@ -18,6 +18,7 @@ package eu.socie.mongo_async_persistor.util;
 
 import java.util.List;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.vertx.java.core.json.JsonArray;
 import org.vertx.java.core.json.JsonObject;
 
@@ -91,7 +92,9 @@ public class MongoUtil {
 			String name = element.getName();
 		
 			if (element instanceof StringElement) {
-				obj.putString(name, ((StringElement) element).getValue());
+				String e = ((StringElement) element).getValue();
+				e = StringEscapeUtils.unescapeJava(e);
+				obj.putString(name, e);
 			}
 			if (element instanceof ObjectIdElement) {
 				String id = ((ObjectIdElement) element).getId().toHexString();
@@ -141,7 +144,9 @@ public class MongoUtil {
 				arr.add(id);
 			}
 			if (element instanceof StringElement) {
-				arr.add(((StringElement) element).getValue());
+				String e = ((StringElement) element).getValue();
+				e = StringEscapeUtils.unescapeJava(e);
+				arr.add(e);
 			}
 			if (element instanceof IntegerElement) {
 				arr.add(((IntegerElement) element).getValue());
@@ -165,7 +170,7 @@ public class MongoUtil {
 	 * Converts a Bson Document to its Bson form and then encapsulates it in a
 	 * JsonObject
 	 * 
-	 * @param dbObject
+	 * @param document
 	 *            the object to convert
 	 * @return the JsonObject representing the Bson MongoDB form
 	 * @throws java.lang.IllegalArgumentException
