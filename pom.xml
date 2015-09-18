@@ -85,8 +85,13 @@
 			<version>${vertx.version}</version> <scope>provided</scope> <classifier>sources</classifier> 
 			</dependency> -->
 		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
 			<groupId>io.vertx</groupId>
-			<artifactId>vertx-platform</artifactId>
+			<artifactId>vertx-core</artifactId>
 			<version>${vertx.version}</version>
 			<scope>provided</scope>
 		</dependency>

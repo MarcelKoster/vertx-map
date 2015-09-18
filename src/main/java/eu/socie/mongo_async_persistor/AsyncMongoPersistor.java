@@ -197,9 +197,6 @@ public class AsyncMongoPersistor extends Verticle {
 			fileMsg.reply(buffer);
 
 		} catch (IllegalArgumentException | IOException e) {
-			// FIXME remove
-			System.out.println(e.getMessage());
-
 			castError(fileMsg, ERROR_NO_FILE_FOR_ID_CODE,
 					String.format(ERROR_NO_FILE_FOR_ID_MSG, id));
 
