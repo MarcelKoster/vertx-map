@@ -358,8 +358,8 @@ public class AsyncGridFs extends GridFs {
 			throw new IOException(e.getCause());
 		} finally {
 			if (failed) {
-				myFilesCollection.delete(where(ID_FIELD).equals(id));
-				myChunksCollection.delete(where(FILES_ID_FIELD).equals(id));
+				myFilesCollection.deleteAsync(where(ID_FIELD).equals(id));
+				myChunksCollection.deleteAsync(where(FILES_ID_FIELD).equals(id));
 			}
 		}
 
